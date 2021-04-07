@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>Hello World</title>
+    <url>/2021/03/19/hello-world/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>树莓派学习笔记（一）——刷入固件、开启ssh、配置wifi</title>
+    <url>/2021/04/07/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89%E2%80%94%E2%80%94%E5%88%B7%E5%85%A5%E5%9B%BA%E4%BB%B6%E3%80%81%E5%BC%80%E5%90%AFssh%E3%80%81%E9%85%8D%E7%BD%AEwifi/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="树莓派学习笔记-一-——-刷入固件、联网、开启ssh"><a href="#树莓派学习笔记-一-——-刷入固件、联网、开启ssh" class="headerlink" title="树莓派学习笔记(一) —— 刷入固件、联网、开启ssh"></a>树莓派学习笔记(一) —— 刷入固件、联网、开启ssh</h1><h2 id="一、刷入固件"><a href="#一、刷入固件" class="headerlink" title="一、刷入固件"></a>一、刷入固件</h2><p>最近开始折腾树莓派，拿到这块板子后第一件事便是准备<strong>内存卡</strong>（32G足矣）。<br><img src="https://border-cu.coding.net/p/coding-code-guide/d/myblog/git/raw/master/tb_image_share_1617799338148.jpg" alt="内存卡"></p>
+<h2 id="然后准备镜像"><a href="#然后准备镜像" class="headerlink" title="然后准备镜像"></a>然后准备镜像</h2><p><a href="https://www.raspberrypi.org/software/operating-systems/">树莓派官方</a>提供了三个镜像，分别是桌面+常用软件版、桌面版、轻量版（无桌面版）。<br><img src="https://border-cu.coding.net/p/coding-code-guide/d/myblog/git/raw/master/asdfafaf.png" alt="官方固件"><br>而做服务器的话，使用轻量版就够了。</p>
+<p>树莓派官方可能因为中国特殊的网络环境进入不了，可以去<a href="https://shumeipai.nxez.com/download">树莓派实验室</a>或者百度寻找资源。</p>
+<p>下载好固件后建议通过<strong>balenaEtcher</strong>（自行寻找资源）将固件刷入内存卡。</p>
+<hr>
+<h2 id="二、配置wifi"><a href="#二、配置wifi" class="headerlink" title="二、配置wifi"></a>二、配置wifi</h2><p>因为折腾树莓派需要网络环境、所以我们在没有网线的条件下只能通过配置wifi来连接网络。<br><strong>方法：</strong><br>将刷好 Raspbian 系统的 SD 卡用电脑读取。在 boot 分区，也就是树莓派的 <code>/boot</code> 目录下新建 wpa_supplicant.conf 文件，按照下面的参考格式填入内容并保存 wpa_supplicant.conf 文件。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">country&#x3D;CN</span><br><span class="line">ctrl_interface&#x3D;DIR&#x3D;&#x2F;var&#x2F;run&#x2F;wpa_supplicant GROUP&#x3D;netdev</span><br><span class="line">update_config&#x3D;1</span><br><span class="line"> </span><br><span class="line">network&#x3D;&#123;</span><br><span class="line">ssid&#x3D;&quot;WiFi-A&quot;</span><br><span class="line">psk&#x3D;&quot;12345678&quot;</span><br><span class="line">key_mgmt&#x3D;WPA-PSK</span><br><span class="line">priority&#x3D;1</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">network&#x3D;&#123;</span><br><span class="line">ssid&#x3D;&quot;WiFi-B&quot;</span><br><span class="line">psk&#x3D;&quot;12345678&quot;</span><br><span class="line">key_mgmt&#x3D;WPA-PSK</span><br><span class="line">priority&#x3D;2</span><br><span class="line">scan_ssid&#x3D;1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>说明以及不同安全性的 WiFi 配置示例：</strong><br>#ssid:网络的ssid<br>#psk:密码<br>#priority:连接优先级，数字越大优先级越高（不可以是负数）<br>#scan_ssid:连接隐藏WiFi时需要指定该值为1</p>
+<hr>
+<h2 id="三、开启ssh"><a href="#三、开启ssh" class="headerlink" title="三、开启ssh"></a>三、开启ssh</h2><p>因为树莓派轻量版镜像是没有桌面的，所以一切的命令都是通过一些终端，比如手机、电脑，使用ssh远程连接，通过命令行窗口来操控树莓派。<br><strong>方法：</strong><br>在 boot 分区新建一个文件，空白的即可，文件命名为 ssh。注意要小写且不要有任何扩展名。<br><img src="https://border-cu.coding.net/p/coding-code-guide/d/myblog/git/raw/master/ssh.png" alt="ssh"><br>树莓派在启动之后会在检测到这个文件之后自动启用 ssh 服务。随后即可通过登录路由器找到树莓派的 IP 地址，通过 ssh 连接到树莓派。</p>
+<hr>
+<h2 id="四、推荐几个ssh终端"><a href="#四、推荐几个ssh终端" class="headerlink" title="四、推荐几个ssh终端"></a>四、推荐几个ssh终端</h2><p>windows： Finalshell、putty<br>安卓：Termius</p>
+]]></content>
+      <categories>
+        <category>树莓派</category>
+      </categories>
+      <tags>
+        <tag>-树莓派</tag>
+      </tags>
+  </entry>
+</search>
