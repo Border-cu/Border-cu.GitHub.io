@@ -38,7 +38,38 @@
 <h2 id="四、推荐几个ssh终端"><a href="#四、推荐几个ssh终端" class="headerlink" title="四、推荐几个ssh终端"></a>四、推荐几个ssh终端</h2><p>windows： Finalshell、putty<br>安卓：Termius</p>
 ]]></content>
       <categories>
-        <category>树莓派</category>
+        <category>树莓派学习笔记</category>
+      </categories>
+      <tags>
+        <tag>树莓派</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>树莓派学习笔记（二）——修改软件源</title>
+    <url>/2021/04/08/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89%E2%80%94%E2%80%94%E4%BF%AE%E6%94%B9%E8%BD%AF%E4%BB%B6%E6%BA%90/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="树莓派学习笔记-二-——-修改软件源"><a href="#树莓派学习笔记-二-——-修改软件源" class="headerlink" title="树莓派学习笔记(二) —— 修改软件源"></a>树莓派学习笔记(二) —— 修改软件源</h2><p>在正式开始折腾树莓派之前，我们要更换树莓派的软件源，基本所有的linux系统在大陆环境都需要换源。</p>
+<p>那么什么是软件源，为什么要更换软件呢？<br>软件源是指 debian 系操作系统的应用程序安装包仓库，很多的软件都会这收录到这个仓库里面。而树莓派的 raspberrypi 操作系统也是基于 debian 的，所以树莓派也有自己的软件源，用来收录各种树莓派应用程序。</p>
+<p>默认情况下，树莓派软件源地址是  <a href="http://archive.raspbian.org/">http://archive.raspbian.org/</a>，位于欧洲，在国内访问是非常慢的，经常只有几 k 每秒的下载速率。所以我们在折腾树莓派之前，要替换成国内的软件源。</p>
+<p><a href="https://www.raspbian.org/RaspbianMirrors">https://www.raspbian.org/RaspbianMirrors</a>这里可以看到树莓派官方承认的所有镜像站。</p>
+<p>修该软件源之前我们需要先用一个工具看一下自己所在的网络位置最适合那个软件源<br>tvtv.fun博客网址 <a href="https://tvtv.fun/ping/">https://tvtv.fun/ping/</a>。这个博客中为我们提供了所需要的工具，感谢博主（此博主也提供一些nas教程，非广告）。<br><img src="https://border-cu.coding.net/p/coding-code-guide/d/myblog/git/raw/master/%E5%BB%B6%E8%BF%9F%E6%B5%8B%E8%AF%95.png" alt="延迟测试"></p>
+<p>看一下哪一个延迟最低，然后确认是否有树莓派的镜像。我这里延迟最低的是北京外国语大学镜像站。</p>
+<p>进入命令行窗口输入<code>sudo nano /etc/apt/sources.list</code>并回车，进入编辑器。</p>
+<blockquote>
+<p>sudo 是指用系统管理员权限启动，nano 是树莓派内置的轻量文本编辑器，而 /etc/apt/sources.list 就是软件源的配置文件地址了。</p>
+</blockquote>
+<p>接着编辑这个文件，如下图所示，把原来的内容注释掉（最前面加 # 号）或者删掉，在文件最顶部添加下面的内容：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">deb http://mirrors.bfsu.edu.cn/raspbian/raspbian/ buster main non-free contrib</span><br><span class="line">deb-src http://mirrors.bfsu.edu.cn/raspbian/raspbian/ buster main non-free contrib</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>解释一下deb和deb-src<br>在source.list里面是指向不同的软件库分类目录。一个是deb包的目录。一个是源码目录。不自己看程序或者编译，deb-src不改也可。</p>
+</blockquote>
+<p>如果你使用其他地方的镜像只需要把网址前面的<code>mirrors.bfsu.edu.cn</code>换成你所使用的镜像地址就可以。<br>按 ctrl-o 保存，回车确认，按 ctrl-x 关闭。</p>
+<p>同样的方法，输入<br><code>sudo nano /etc/apt/sources.list.d/raspi.list</code><br>把  <code>/etc/apt/sources.list.d/raspi.list</code>文件也替换成下面的内容：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">deb http://mirrors.bfsu.edu.cn/raspberrypi/ buster main ui</span><br></pre></td></tr></table></figure>
+<p>至此，树莓派软件源就替换好了<br>然后同步更新源，执行如下命令：<code>sudo apt-get update</code><br>更新升级安装软件包：<code>sudo apt-get upgrade</code><br>这一步别忘了按y确认，时间较长。</p>
+]]></content>
+      <categories>
+        <category>树莓派学习笔记</category>
       </categories>
       <tags>
         <tag>树莓派</tag>
