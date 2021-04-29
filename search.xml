@@ -122,4 +122,23 @@
         <tag>vim</tag>
       </tags>
   </entry>
+  <entry>
+    <title>git学习笔记（一）——保存账号密码</title>
+    <url>/2021/04/29/git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89%E2%80%94%E2%80%94%E4%BF%9D%E5%AD%98%E8%B4%A6%E5%8F%B7%E5%AF%86%E7%A0%81/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="git记住用户名和密码，适用于git-bash-和码云"><a href="#git记住用户名和密码，适用于git-bash-和码云" class="headerlink" title="git记住用户名和密码，适用于git bash 和码云"></a>git记住用户名和密码，适用于git bash 和码云</h1><p>在HOME目录中，一般为C:\users\Administrator，也可以是你自己创建的系统用户名目录，反正都在C:\users***中。</p>
+<p>创建.git-credentials文件。<br><img src="https://border-cu.coding.net/p/coding-code-guide/d/myblog/git/raw/master/833807-20181028093635427-1880605119.jpg" alt="路径"><br>使用git bash 输入下面命令行即可创建（注意在第一层文件夹下）<br><code>touch .git-credentials</code></p>
+<p>创建完成后，<br>如果是github在该文件中输入：<a href="https://username:password@github.com/">https://username:password@github.com</a><br>如果是码云的为：<a href="https://username:password@gitee.com/">https://username:password@gitee.com</a><br>注：username对应你的用户名，password对应你的密码</p>
+<p>然后再进入git bash中输入下面命令行<br><code>git config --global credential.helper store</code></p>
+<p>store为永久存储，当然也可以设置临时的<br><code>git config –global credential.helper cache</code></p>
+<p>默认为15分钟，如果想设置保存时间的话，可以输入：<br><code>git config credential.helper ‘cache –timeout=3600’</code></p>
+<p><strong>增加远程地址的时候带上密码也是可以的。</strong><br><a href="http://yourname:password@git.oschina.net/name/project.git">http://yourname:password@git.oschina.net/name/project.git</a><br>补充：使用客户端也可以存储密码的。</p>
+<p>如果你正在使用ssh而且想体验https带来的高速，那么你可以这样做： 切换到项目目录下 ：<br><code>cd projectfile/</code><br>移除远程ssh方式的仓库地址<br>  <code>git remote rm origin</code><br>增加https远程仓库地址<br> <code>git remote add origin http://yourname:password@git.oschina.net/name/project.git</code></p>
+]]></content>
+      <categories>
+        <category>git学习笔记</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
+      </tags>
+  </entry>
 </search>
