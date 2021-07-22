@@ -77,8 +77,27 @@
       </tags>
   </entry>
   <entry>
-    <title>linux学习笔记（一）——vim基础操作</title>
-    <url>/2021/04/29/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89%E2%80%94%E2%80%94vim%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/</url>
+    <title>git学习笔记（一）——保存账号密码</title>
+    <url>/2021/04/29/git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89%E2%80%94%E2%80%94%E4%BF%9D%E5%AD%98%E8%B4%A6%E5%8F%B7%E5%AF%86%E7%A0%81/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="git记住用户名和密码，适用于git-bash-和码云"><a href="#git记住用户名和密码，适用于git-bash-和码云" class="headerlink" title="git记住用户名和密码，适用于git bash 和码云"></a>git记住用户名和密码，适用于git bash 和码云</h1><p>在HOME目录中，一般为C:\users\Administrator，也可以是你自己创建的系统用户名目录，反正都在C:\users***中。</p>
+<p>创建.git-credentials文件。<br><img src="https://border-cu.coding.net/p/coding-code-guide/d/myblog/git/raw/master/833807-20181028093635427-1880605119.jpg" alt="路径"><br>使用git bash 输入下面命令行即可创建（注意在第一层文件夹下）<br><code>touch .git-credentials</code></p>
+<p>创建完成后，<br>如果是github在该文件中输入：<a href="https://username:password@github.com/">https://username:password@github.com</a><br>如果是码云的为：<a href="https://username:password@gitee.com/">https://username:password@gitee.com</a><br>注：username对应你的用户名，password对应你的密码</p>
+<p>然后再进入git bash中输入下面命令行<br><code>git config --global credential.helper store</code></p>
+<p>store为永久存储，当然也可以设置临时的<br><code>git config –global credential.helper cache</code></p>
+<p>默认为15分钟，如果想设置保存时间的话，可以输入：<br><code>git config credential.helper ‘cache –timeout=3600’</code></p>
+<p><strong>增加远程地址的时候带上密码也是可以的。</strong><br><a href="http://yourname:password@git.oschina.net/name/project.git">http://yourname:password@git.oschina.net/name/project.git</a><br>补充：使用客户端也可以存储密码的。</p>
+<p>如果你正在使用ssh而且想体验https带来的高速，那么你可以这样做： 切换到项目目录下 ：<br><code>cd projectfile/</code><br>移除远程ssh方式的仓库地址<br>  <code>git remote rm origin</code><br>增加https远程仓库地址<br> <code>git remote add origin http://yourname:password@git.oschina.net/name/project.git</code></p>
+]]></content>
+      <categories>
+        <category>git学习笔记</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux学习笔记（一）——vim基础操作</title>
+    <url>/2021/04/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89%E2%80%94%E2%80%94vim%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="vi-vim-的使用"><a href="#vi-vim-的使用" class="headerlink" title="vi/vim 的使用"></a>vi/vim 的使用</h2><p>基本上 vi/vim 共分为三种模式，分别是<strong>命令模式（Command mode）</strong>，<strong>输入模式（Insert mode）</strong>和<strong>底线命令模式（Last line mode）</strong>。 这三种模式的作用分别是：</p>
 <h3 id="命令模式："><a href="#命令模式：" class="headerlink" title="命令模式："></a>命令模式：</h3><p>用户刚刚启动 vi/vim，便进入了命令模式。</p>
 <p>此状态下敲击键盘动作会被Vim识别为命令，而非输入字符。比如我们此时按下i，并不会输入一个字符，i被当作了一个命令。</p>
@@ -109,7 +128,7 @@
 <ul>
 <li>  q 退出程序</li>
 <li>  w 保存文件</li>
-<li>  qw 保存并退出文件</li>
+<li>  wq 保存并退出文件</li>
 </ul>
 <p>按ESC键可随时退出底线命令模式。</p>
 <p>简单的说，我们可以将这三个模式想成底下的图标来表示：<br><img src="https://border-cu.coding.net/p/coding-code-guide/d/myblog/git/raw/master/vim-vi-workmodel.jpg" alt="模式转换图"></p>
@@ -123,22 +142,52 @@
       </tags>
   </entry>
   <entry>
-    <title>git学习笔记（一）——保存账号密码</title>
-    <url>/2021/04/29/git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89%E2%80%94%E2%80%94%E4%BF%9D%E5%AD%98%E8%B4%A6%E5%8F%B7%E5%AF%86%E7%A0%81/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="git记住用户名和密码，适用于git-bash-和码云"><a href="#git记住用户名和密码，适用于git-bash-和码云" class="headerlink" title="git记住用户名和密码，适用于git bash 和码云"></a>git记住用户名和密码，适用于git bash 和码云</h1><p>在HOME目录中，一般为C:\users\Administrator，也可以是你自己创建的系统用户名目录，反正都在C:\users***中。</p>
-<p>创建.git-credentials文件。<br><img src="https://border-cu.coding.net/p/coding-code-guide/d/myblog/git/raw/master/833807-20181028093635427-1880605119.jpg" alt="路径"><br>使用git bash 输入下面命令行即可创建（注意在第一层文件夹下）<br><code>touch .git-credentials</code></p>
-<p>创建完成后，<br>如果是github在该文件中输入：<a href="https://username:password@github.com/">https://username:password@github.com</a><br>如果是码云的为：<a href="https://username:password@gitee.com/">https://username:password@gitee.com</a><br>注：username对应你的用户名，password对应你的密码</p>
-<p>然后再进入git bash中输入下面命令行<br><code>git config --global credential.helper store</code></p>
-<p>store为永久存储，当然也可以设置临时的<br><code>git config –global credential.helper cache</code></p>
-<p>默认为15分钟，如果想设置保存时间的话，可以输入：<br><code>git config credential.helper ‘cache –timeout=3600’</code></p>
-<p><strong>增加远程地址的时候带上密码也是可以的。</strong><br><a href="http://yourname:password@git.oschina.net/name/project.git">http://yourname:password@git.oschina.net/name/project.git</a><br>补充：使用客户端也可以存储密码的。</p>
-<p>如果你正在使用ssh而且想体验https带来的高速，那么你可以这样做： 切换到项目目录下 ：<br><code>cd projectfile/</code><br>移除远程ssh方式的仓库地址<br>  <code>git remote rm origin</code><br>增加https远程仓库地址<br> <code>git remote add origin http://yourname:password@git.oschina.net/name/project.git</code></p>
+    <title>Linux学习笔记（二）——liunx版本分支梳理及常见系统介绍</title>
+    <url>/2021/07/22/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89%E2%80%94%E2%80%94liunx%E7%89%88%E6%9C%AC%E5%88%86%E6%94%AF%E6%A2%B3%E7%90%86%E5%8F%8A%E5%B8%B8%E8%A7%81%E7%B3%BB%E7%BB%9F%E4%BB%8B%E7%BB%8D/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>接触linux有一段时间了，但是一直不知道各版本之间的关系，今天有空梳理记录一下，顺便介绍一下常见的Linux系统。</p>
+<h3 id="Linux介绍"><a href="#Linux介绍" class="headerlink" title="Linux介绍"></a><strong>Linux介绍</strong></h3><p><a href="http://en.wikipedia.org/wiki/Linux">Linux</a>，最早由Linus Benedict <a href="http://en.wikipedia.org/wiki/Linus_Torvalds">Torvalds</a>在1991年开始编写。在这之前，Richard Stallman创建了Free Software Foundation（<a href="http://en.wikipedia.org/wiki/Free_Software_Foundation">FSF</a>）组织以及GNU项目，并不断的编写创建<a href="http://en.wikipedia.org/wiki/GNU">GNU</a>程序（此类程序的许可方式均为<a href="http://en.wikipedia.org/wiki/GPL">GPL</a>: General Public License）。在不断的有杰出的程序员和开发者加入到GNU组织中后，便造就了今天我们所看到的Linux，或称GNU/Linux。</p>
+<p>Linux的发行版本可以大体分为三个大分支和若干个小分支：</p>
+<p><img src="https://i.loli.net/2021/07/22/PwWb74RekO9MvZq.png" alt="Linux分支略图"></p>
+<h4 id="三个大分支"><a href="#三个大分支" class="headerlink" title="三个大分支"></a><strong>三个大分支</strong></h4><p>Redhat分支：基于 rpm 包， yum 包管理方式，一般由商业公司维护。</p>
+<p>Debian分支：基于 deb 包， apt-get 包管理方式，一般由社区组织维护。</p>
+<p>Slackware分支：基于 tgz(tar/gzip) 包，Zypper包管理方式。</p>
+<h4 id="若干小分支"><a href="#若干小分支" class="headerlink" title="若干小分支"></a><strong>若干小分支</strong></h4><p>Arch</p>
+<p>Enoch</p>
+<p>Android（没错，安卓也是）</p>
+<p>……</p>
+<p>本文末有发行年份的详细家族图谱（<a href="https://upload.wikimedia.org/wikipedia/commons/9/96/Linux_Distribution_Timeline_08_Aug_2017.svg">更详细的原链接</a>，可 Ctrl+F 查询），太长了，放在这里影响观感。</p>
+<hr>
+<h3 id="常见Linux发行版本介绍"><a href="#常见Linux发行版本介绍" class="headerlink" title="常见Linux发行版本介绍"></a>常见Linux发行版本介绍</h3><h4 id="Redhat系列"><a href="#Redhat系列" class="headerlink" title="Redhat系列"></a><strong>Redhat系列</strong></h4><p><img src="https://i.loli.net/2021/07/22/SIvkUADEmj18qcM.jpg" alt="CentOS"></p>
+<p><a href="http://en.wikipedia.org/wiki/Redhat">Redhat</a>，应该称为Redhat系列，包括RHEL(Redhat Enterprise Linux，也就是所谓的Redhat Advance Server，收费版本)、Fedora Core(由原来的Redhat桌面版本发展而来，免费版本)、CentOS(RHEL的社区克隆版本，免费)。Redhat应该说是在国内使用人群最多的Linux版本，甚至有人将Redhat等同于Linux，而有些老鸟更是只用这一个版本的Linux。所以这个版本的特点就是使用人群数量大，资料非常多，言下之意就是如果你有什么不明白的地方，很容易找到人来问，而且网上的一般Linux教程都是以Redhat为例来讲解的。Redhat系列的包管理方式采用的是基于RPM包的YUM包管理方式，包分发方式是编译好的二进制文件。稳定性方面RHEL和CentOS的稳定性非常好，适合于服务器使用，但是Fedora Core的稳定性较差，最好只用于桌面应用。</p>
+<p><a href="https://en.wikipedia.org/wiki/CentOS">CentOS</a>，可以把CentOS理解为Red Hat AS系列的社区版，它完全就是对Red Hat AS进行改进后发布的。各种操作、使用和RHEL没有区别。是企业Linux发行版领头羊Red Hat Enterprise Linux（以下称之为RHEL）的再编译版本（是一个再发行版本），而且在RHEL的基础上修正了不少已知的 Bug ，相对于其他 Linux 发行版，其稳定性值得信赖。普遍作为网站服务器使用。</p>
+<p><a href="">Fedora</a>，其实和RedHat也同属一个派系，背后的支撑企业也是红帽子公司。但是Fedora是免费发行版，而且更加侧重于新技术的试验和加持，因此稳定性方面的考量较 CentOS 会稍微次要一些。</p>
+<h4 id="debian系列"><a href="#debian系列" class="headerlink" title="debian系列"></a><strong>debian系列</strong></h4><p><img src="https://i.loli.net/2021/07/22/VZ2uYSWphCnyJmg.jpg" alt="Ubuntu"></p>
+<p><a href="http://en.wikipedia.org/wiki/Debian">Debian</a>，或者称Debian系列，包括Debian和Ubuntu等。Debian是社区类Linux的典范，是迄今为止最遵循GNU规范的Linux系统。Debian最早由Ian Murdock于1993年创建，分为三个版本分支（branch）： stable, testing 和 unstable。其中，unstable为最新的测试版本，其中包括最新的软件包，但是也有相对较多的bug，适合桌面用户。testing的版本都经 过unstable中的测试，相对较为稳定，也支持了不少新技术（比如SMP等）。而stable一般只用于服务器，上面的软件包大部分都比较过时，但是 稳定和安全性都非常的高。Debian最具特色的是apt-get / dpkg包管理方式，其实Redhat的YUM也是在模仿Debian的APT方式，但在二进制文件发行方式中，APT应该是最好的了。Debian的资 料也很丰富，有很多支持的社区，有问题求教也有地方可去。</p>
+<p><a href="http://en.wikipedia.org/wiki/Ubuntu_(operating_system)">Ubuntu</a>，严格来说不能算一个独立的发行版本，Ubuntu是基于Debian的unstable版本加强而来，可以这么说，Ubuntu就是 一个拥有Debian所有的优点，以及自己所加强的优点的近乎完美的 Linux桌面系统。根据选择的桌面系统不同，有三个版本可供选择，基于Gnome的Ubuntu，基于KDE的Kubuntu以及基于Xfc的 Xubuntu。特点是界面非常友好，容易上手，对硬件的支持非常全面，是最适合做桌面系统的Linux发行版本。</p>
+<p><a href="https://baike.baidu.com/item/deepin/3432935?fr=aladdin">Deepin</a>，是由<a href="https://baike.baidu.com/item/%E6%AD%A6%E6%B1%89%E6%B7%B1%E4%B9%8B%E5%BA%A6%E7%A7%91%E6%8A%80%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8/19984704">武汉深之度科技有限公司</a>在<a href="https://baike.baidu.com/item/Debian/748667">Debian</a>基础上开发的<a href="https://baike.baidu.com/item/Linux/27050">Linux</a>操作系统，其前身是Hiweed Linux操作系统。很适合做桌面系统，学习成本低。华为就用它代替过Windows一段时间。</p>
+<p><a href="https://en.wikipedia.org/wiki/Armbian">Armbian</a>，是轻量级的Debian系统和为<a href="https://baike.baidu.com/item/ARM%E5%BC%80%E5%8F%91%E6%9D%BF/9158050">ARM开发板</a>专门发行并重新编译的Debian系统.</p>
+<p><a href="https://en.wikipedia.org/wiki/Raspberry_Pi_OS">Raspberry Pi OS</a>，（以前叫Raspbian）是一个基于Debian的Raspberry Pi操作系统，专门为树莓派硬件有优化。</p>
+<h4 id="Slackware系列"><a href="#Slackware系列" class="headerlink" title="Slackware系列"></a><strong>Slackware系列</strong></h4><p><img src="https://i.loli.net/2021/07/22/QtIw18qPB5jHzRm.jpg" alt="SuSE"></p>
+<p><a href="http://en.wikipedia.org/wiki/Slackware">Slackware</a>，是由Patrick Volkerding开发的GNU/Linux发行版。与很多其他的发行版不同，它坚持KISS（Keep It Simple Stupid）的原则，就是说没有任何配置系统的图形界面工具。一开始，配置系统会有一些困难，但是更有经验的用户会喜欢这种方式的透明性和灵活性。 Slackware Linux的另一个突出的特性也符合KISS原则：Slackware没有如RPM之类的成熟的软件包管理器。Slackware的软件包都是通常的tgz(tar/gzip)格式文件再加上安装脚本。Tgz对于有经验的用户来说，比RPM更为强大，并避免了RPM之类管理器的依赖性问题。Slackware与其他的发行版本（Red Hat、Debian、Gentoo、SuSE、 Mandriva、Ubuntu等）不同的道路，它力图成为“UNIX风格”的Linux发行版本。只吸收稳定版本的应用程序，并且缺少其他linux版本中那些为发行版本定制的配置工具。</p>
+<p><a href="http://en.wikipedia.org/wiki/SUSE_Linux">SUSE Linux</a>，简称”SuSE”，发音为/zuz/，意思为”Software- und System-Entwicklung”，这是一句德文，英文为”Software and system development”。现在这家公司的名字再度更改成SUSE Linux。它原是德国的 SuSE Linux AG公司发行维护的Linux发行版，是属于此公司的注册商标。2004年这家公司被Novell公司收购。广义上SUSE Linux是一系列Linux发行版，第一个版本出现在1994年初，SUSE现存的最古老的商业发行版之一，起源于德国，而SUSE Linux 针对个人用户。SUSE Linux原是以Slackware Linux为基础，并提供完整德文使用界面的产品。1992年 Peter McDonald成立了Softlanding Linux System(SLS)这个发行版。这套发行版包含的软件非常多，更首次收录了X Window及TCP/IP等套件。Slackware就是一个基于SLS的发行版。</p>
+<h4 id="其他系列"><a href="#其他系列" class="headerlink" title="其他系列"></a><strong>其他系列</strong></h4><p><img src="https://i.loli.net/2021/07/22/CZyIpVo8WJSv5xA.png" alt="Arch"></p>
+<p><a href="http://lib.csdn.net/base/15">Android</a>，是一种基于Linux的自由及开放源代码的操作系统，主要使用于移动设备，如智能手机和平板电脑，由Google公司和开放手机联盟领导及开发。</p>
+<p><a href="http://en.wikipedia.org/wiki/Chrome_OS">Chrome OS</a>，是一款基于Linux的开源PC操作系统，定位于上网本、紧凑型以及低成本电脑。这款开源软件将被命名为Chrome OS，谷歌公司于2010年12月7日在美国举行Chrome相关产品发布会，发布会上正式发布Chrome Web store和Chrome OS。Chromium OS是Google Chrome OS计算机操作系统的开源项目，主要是提供给开发者用的，每个人可以检查、修改代码甚至是编译出自己的版本。</p>
+<p><a href="https://wiki.archlinux.org/title/Arch_Linux_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)">Arch</a>，系统主要由自由和开源软件组成，支持社区参与。系统设计以KISS原则（保持简单和愚蠢）为总体指导原则，注重代码正确、优雅和极简主义，期待用户能够愿意去理解系统的操作。Arch Linux系统安装、删除和更新软件的软件包管理器叫做pacman。Arch Linux采用滚动发行模式来获取系统更新和软件的最新版本。系统安装映像只简单地包含系统主要组件，不提供图形界面。</p>
+<hr>
+<h3 id="初学者Linux操作系统推荐"><a href="#初学者Linux操作系统推荐" class="headerlink" title="初学者Linux操作系统推荐"></a><strong>初学者Linux操作系统推荐</strong></h3><p>个人电脑：Ubuntu或者国产的Deepin（其实更推荐Ubuntu，因为Deepin和Windows太像了，学不到什么东西）</p>
+<p>服务器：CentOS</p>
+<p>深度学习：Arch</p>
+<hr>
+<h3 id="操作系统分支图"><a href="#操作系统分支图" class="headerlink" title="操作系统分支图"></a>操作系统分支图</h3><p><img src="https://i.loli.net/2021/07/21/VfXG9sSBKrFxkOc.jpg" alt="操作系统分支图"></p>
+<p><img src="https://i.loli.net/2021/07/21/KiQgHxZeX9r8Ssd.png" alt="家族图谱"></p>
+<p>本文部分摘自<a href="https://blog.csdn.net/Com_ma/article/details/78634343%EF%BC%8C%E5%9B%BE%E7%89%87%E9%83%A8%E5%88%86%E6%9D%A5%E6%BA%90%E4%BA%8E%E7%BD%91%E7%BB%9C%EF%BC%8C%E4%BE%B5%E5%88%A0%E3%80%82">https://blog.csdn.net/Com_ma/article/details/78634343，图片部分来源于网络，侵删。</a></p>
 ]]></content>
       <categories>
-        <category>git学习笔记</category>
+        <category>linux学习笔记</category>
       </categories>
       <tags>
-        <tag>git</tag>
+        <tag>linux</tag>
       </tags>
   </entry>
 </search>
